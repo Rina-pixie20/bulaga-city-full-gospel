@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Live | Bulaga City Full Gospel Church</title>
+<meta name="description" content="Bulaga City Full Gospel Church — Kampala–Mityana Road, opposite Kalambi Junior School. Year of God's Divine Visitation.">
+<meta name="theme-color" content="#0b0b0d">
+<meta property="og:title" content="Live | Bulaga City Full Gospel Church">
+<meta property="og:description" content="God has visited His people — Luke 7:16.">
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/animations.css"><link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div class="preloader"><div class="loader"><div class="loader-mark">BC</div><p>BULAGA CITY FULL GOSPEL CHURCH</p></div></div>
+<div class="cursor-dot"></div><div class="cursor-ring"></div>
+<header id="site-header" class="site-header"></header>
+<main>
+<section class="page-hero"><div class="container"><div class="eyebrow reveal">Live</div><h1 class="display reveal">JOIN US, WHEREVER YOU ARE.</h1><p class="lead reveal">The live player is designed to use the church's YouTube livestream when one is active.</p></div></section>
+<section class="section"><div class="container"><div class="live-head reveal"><div><div class="eyebrow">Live from Bulaga</div><h2 class="h2">WORSHIP WITH US.</h2></div><span class="live-badge"><span class="live-dot"></span> Live now</span></div><div class="video-shell reveal" id="live-player"><div style="aspect-ratio:16/9;display:grid;place-items:center;color:#aaa;background:#07070a;text-align:center"><div><div style="font-size:2rem">▶</div><p>We're not live right now.</p><p class="meta">Add the real YouTube channel ID and API key in <strong>js/main.js</strong> to enable automatic detection.</p></div></div></div><div style="margin-top:22px"><a class="btn" href="https://www.youtube.com/" target="_blank" rel="noopener">WATCH LIVE ON YOUTUBE ↗</a></div></div></section>
+<section class="section"><div class="container grid-2"><div class="reveal"><div class="eyebrow">Built for future connection</div><h2 class="h2">ONE PLACE FOR EVERY BROADCAST.</h2><p class="lead">The JavaScript integration is structured to retrieve live, upcoming and recent YouTube videos. Until real credentials are added, the page intentionally shows a clear fallback instead of pretending a stream exists.</p></div><div class="image-card reveal"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=85" alt="Worship performance"></div></div></section>
+</main>
+<footer id="site-footer" class="site-footer"></footer>
+<div class="toast"></div>
+<script src="js/main.js"></script>
+<script src="js/youtube.js"></script><script>document.addEventListener("DOMContentLoaded",async()=>{const live=await getLiveStream();if(live)renderVideo(live,document.querySelector("#live-player"));});</script>
+</body></html>
