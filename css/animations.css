@@ -1,0 +1,1 @@
+.reveal{transition:opacity .7s ease,transform .7s ease}.reveal.pre-hidden{opacity:0;transform:translateY(25px)}.card,.ministry,.value,.day{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}.card:hover,.ministry:hover,.value:hover,.day:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.25);box-shadow:0 18px 50px rgba(0,0,0,.22)}
