@@ -1,9 +1,58 @@
 const YOUTUBE_CONFIG={
-  channelUrl:'https://www.youtube.com/@BulagaCityFullGospel',
-  channelHandle:'@BulagaCityFullGospel',
+  channelUrl:'https://www.youtube.com/@BulagaCityFullGospelChurch',
+  channelHandle:'@BulagaCityFullGospelChurch',
   channelId:'',
   apiKey:''
 };
+
+const MANUAL_SERMONS=[
+  {
+    id:'vPCZGrh1qZw',
+    title:'POWER OF A STONE BY MIN. MUSOKE YUSUF (DAY 2) OF WEEK OF PRAYER AND FASTING | 26th OCT 2026',
+    publishedAt:'2026-10-26',
+    thumbnail:'https://i.ytimg.com/vi/vPCZGrh1qZw/hqdefault.jpg'
+  },
+  {
+    id:'O2wWq9DLNvY',
+    title:'1st Sunday Service at Bulaga City Full Gospel Church on 20th September 2026'
+  },
+  {
+    id:'H-svODRIWLg',
+    title:'Final Day of Prayer Walk at Bulaga City Full Gospel'
+  },
+  {
+    id:'1ApDt896h7g',
+    title:'Day 4 of Prayer Walk (Prayer Session) at Bulaga City Full Gospel Church'
+  },
+  {
+    id:'hA_Fy1AoAFk',
+    title:'1st Service Sermon: Response to the Voices by Minister Paul Mwesigwa'
+  },
+  {
+    id:'YnC4rQx0_7Q',
+    title:'Month of Prayer and Fasting'
+  },
+  {
+    id:'eo9fagquRfo',
+    title:"Children's Sunday Service 2"
+  },
+  {
+    id:'PCoMBgm5xYw',
+    title:"Children's Sunday Service"
+  },
+  {
+    id:'J7vzWW99oxQ',
+    title:'Home Coming: Oldies Testify to the Lord'
+  },
+  {
+    id:'wvLWRtn80N0',
+    title:'Home Coming Sunday Praise and Worship Session - Service Two'
+  },
+  {
+    id:'7HSkCqhXmfQ',
+    title:'Home Coming Sunday Praise and Worship Session'
+  }
+];
 
 async function getUploadsPlaylistId(){
   const params=new URLSearchParams({part:'contentDetails',key:YOUTUBE_CONFIG.apiKey});
@@ -41,6 +90,7 @@ async function getLatestVideos(limit=12){
 }
 
 async function getSermons(limit=12){
+  if(!YOUTUBE_CONFIG.apiKey)return MANUAL_SERMONS.slice(0,limit);
   return getLatestVideos(limit);
 }
 
@@ -56,8 +106,11 @@ function openVideoModal(video){
   if(!modal||!iframe)return;
   const title=modal.querySelector('[data-modal-title]');
   if(title)title.textContent=video.title;
+  const watchLink=modal.querySelector('[data-video-link]');
+  if(watchLink)watchLink.href=`https://www.youtube.com/watch?v=${encodeURIComponent(video.id)}`;
   iframe.title=video.title;
-  iframe.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(video.id)}?autoplay=1&rel=0`;
+  iframe.referrerPolicy='origin';
+  iframe.src=`https://www.youtube.com/embed/${encodeURIComponent(video.id)}?autoplay=1&rel=0&playsinline=1`;
   modal.setAttribute('aria-hidden','false');
 }
 

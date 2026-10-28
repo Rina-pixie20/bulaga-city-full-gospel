@@ -26,7 +26,7 @@ function createSermonCard(video){
   const media=document.createElement('div');
   media.className='card-media';
   const image=document.createElement('img');
-  image.src=video.thumbnail;
+  image.src=video.thumbnail||`https://i.ytimg.com/vi/${encodeURIComponent(video.id)}/hqdefault.jpg`;
   image.alt='';
   image.loading='lazy';
   media.append(image);
