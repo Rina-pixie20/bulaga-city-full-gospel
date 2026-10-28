@@ -6,19 +6,14 @@ A cinematic multi-page church website built only with HTML5, CSS3 and vanilla Ja
 Open `index.html` directly in a browser, or serve the folder with any simple static web server.
 
 ## YouTube setup
-Open `js/main.js` and replace:
-- `YOUR_CHANNEL_ID`
-- `YOUR_YOUTUBE_API_KEY`
+The homepage and sermons page automatically display the newest public uploads from the channel's uploads playlist.
 
-The API key should be restricted in Google Cloud Console to the YouTube Data API and the domains where the site is hosted. Do not commit unrestricted secrets.
+1. In Google Cloud Console, create a project and enable **YouTube Data API v3**.
+2. Create an API key, then restrict it to the YouTube Data API and the website's HTTP referrers/domains.
+3. Put that key in `YOUTUBE_CONFIG.apiKey` in `js/youtube.js`. The church channel handle is already configured; set `channelId` there only if you prefer to use the channel ID instead.
+4. Serve the site over HTTP/HTTPS (for example, with a local static web server while developing). Opening the HTML directly as a `file://` URL may prevent API requests from working.
 
-The site uses:
-- `getLiveStream()`
-- `getLatestVideos()`
-- `renderVideo()`
-- `openVideoModal()`
-
-If credentials are absent, the UI deliberately shows a fallback rather than fake church videos.
+The API key is visible to site visitors in a static website, so use referrer restrictions and API quotas; do not use an unrestricted key. Recent uploads refresh when a visitor opens the page. Without a key or if YouTube returns an error, the pages show a clear message instead of fake videos.
 
 ## Replace imagery
 The demo uses remote Unsplash image URLs. For production, replace them with optimized local images in `/images/` and update the URLs in the HTML/JS.
